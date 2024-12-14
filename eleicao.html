@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleição</title>
+</head>
+<body>
+    <input id="nome" placeholder="Digite o nome do Vereador">
+    <br>
+    <br>
+    <input id="nota" placeholder="Digite a nota do vereador">  
+    <br>
+    <br>
+    <button onclick="cadastrarVereador()">Cadastrar Vereador</button>
+    <br>
+    <br>
+    <button onclick="calcularVencedor()">Calcular Vencedor</button>
+   
+
+</body>
+
+    <script>
+        const vereadores = [];
+
+
+        function cadastrarVereador(){
+            const nome = document.getElementById("nome").value
+            const nota = document.getElementById("nota").value
+            
+            if (nome && nota){
+                const vereador = {
+                    nome: nome,
+                    nota: nota
+                }
+                vereadores.push(vereador)
+                alert("Vereador Cadastro com Sucesso!")
+                console.log(vereadores);
+            } else{
+                alert("Digite o nome e a nota!")
+            }
+        }
+
+
+        function calcularVencedor(){
+            if (vereadores.length > 0){
+            
+                let vencedor
+
+                for (const i in vereadores){
+                const vereador = vereadores[i];
+                vencedor = vereadores[0];
+                
+                if(parseFloat(vencedor.nota) < parseFloat(vereador.nota)){
+                    vencedor = vereador;
+                    }
+                }
+                alert("O vencedor foi: " + vencedor.nome)
+            } else{
+                alert("É necessário cadastrar para calcular!")
+            }   
+            console.log(vencedor);
+        }
+
+    </script>
+</html>
